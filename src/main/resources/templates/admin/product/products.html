@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>PRODUCTS</h1>
+<table >
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>manufacturer</td>
+        <td>unit</td>
+        <td>status</td>
+        <td>price</td>
+        <td>img</td>
+        <td>desc</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="e :${products}">
+            <th th:text="${e.getProduct_id()}"></th>
+            <th th:text="${e.getName()}"></th>
+            <th th:text="${e.getManufacturer()}"></th>
+            <th th:text="${e.getUnit()}"></th>
+            <th th:text="${e.getStatus()}"></th>
+            <th th:text="${e.getProductPrices().get(e.getProductPrices().size()-1).getPrice()}"></th>
+            <th th:text="${e.getProductImageList().get(e.getProductImageList().size()-1).getPath()}"></th>
+            <th th:text="${e.getDescription()}"></th>
+            <th >
+                <a th:href="@{/admin/products/{id}(id=${e.getProduct_id()})}">View Detail</a>
+                <a th:href="@{/admin/products/update/{id}(id=${e.getProduct_id()})}">Update</a>
+                <a th:href="@{/admin/products/delete/{id}(id=${e.getProduct_id()})}">delete</a>
+            </th>
+
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
