@@ -18,6 +18,7 @@ public class ProductImage {
 
     @Column(name = "path", length = 250, nullable = false)
     private String path;
+
     @Column(name = "alternative", length = 250)
     private String alternative;
 
