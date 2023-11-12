@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+    <style>
+.container{
+    width: 30%;
+    margin: 0 auto;
+}
+        label{
+            display: inline-block;
+            min-width: 100px;
+        }
+        div{
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+        <div class="container">
+            <h1 >Create Customer</h1>
+            <form th:action="@{/admin/customers/save}" th:object="${customer}" method="post">
+                <div>
+                    <label>Name:</label>
+                    <input type="text" th:field="*{name}">
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" th:field="*{email}">
+                </div>
+                <div>
+                    <label>Phone:</label>
+                    <input type="text" th:field="*{phone}">
+                </div>
+                <div>
+                    <label>Address:</label>
+                    <input type="text" th:field="*{address}">
+                </div>
+                <div>
+                    <input type="submit"  value="Add">
+                </div>
+            </form>
+        </div>
+</body>
+</html>

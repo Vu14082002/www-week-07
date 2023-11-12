@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PROC UPDATE</title>
+    <style>
+        label {
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+<h1>Create New Product</h1>
+<form th:action="@{/admin/products/save}" th:object="${product}" method="post">
+    <div>
+        <label>Product name</label>
+        <input type="text" th:field="*{name}">
+    </div>
+
+    <div>
+        <label>Proc manufacture</label>
+        <input type="text" th:field="*{manufacturer}">
+    </div>
+
+    <div>
+        <label>Unit</label>
+        <input type="text" th:field="*{unit}">
+    </div>
+
+    <div>
+        <label>Proc DESC</label>
+        <textarea rows="4" cols="50" th:field="*{description}"></textarea>
+    </div>
+    <input type="submit">
+</form>
+</body>
+</html>

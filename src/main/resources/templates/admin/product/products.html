@@ -4,46 +4,45 @@
     <meta charset="UTF-8">
     <title>Products</title>
     <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-        *{
-            text-align: center;
+        th{
+            min-width: 85px;
+            max-width: 150px;
         }
     </style>
 </head>
 <body>
-<h1>PRODUCTS</h1>
-<table >
+<h1 align="center">PRODUCTS </h1>
+<div align="center"><a th:href="@{/admin/products/new}">Add <product></product></a></div>
+
+<table width="80%" align="center" border="1">
     <thead>
     <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>manufacturer</td>
-        <td>unit</td>
-        <td>status</td>
-        <td>price</td>
-        <td>img</td>
-        <td>desc</td>
-        <td>Action</td>
+        <th>id</th>
+        <th>name</th>
+        <th>manufacturer</th>
+        <th>unit</th>
+        <th>status</th>
+        <th>price</th>
+        <th>img</th>
+        <th>desc</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
         <tr th:each="e :${products}">
-            <th th:text="${e.getProduct_id()}"></th>
-            <th th:text="${e.getName()}"></th>
-            <th th:text="${e.getManufacturer()}"></th>
-            <th th:text="${e.getUnit()}"></th>
-            <th th:text="${e.getStatus()}"></th>
-            <th th:text="${e.getProductPrices().get(e.getProductPrices().size()-1).getPrice()}"></th>
-            <th th:text="${e.getProductImageList().get(e.getProductImageList().size()-1).getPath()}"></th>
-            <th th:text="${e.getDescription()}"></th>
-            <th >
+            <td  th:text="${e.getProduct_id()}"></td>
+            <td th:text="${e.getName()}"></td>
+            <td th:text="${e.getManufacturer()}"></td>
+            <td th:text="${e.getUnit()}"></td>
+            <td th:text="${e.getStatus()}"></td>
+            <td th:text="${e.getProductPrices().get(e.getProductPrices().size()-1).getPrice()}"></td>
+            <td th:text="${e.getProductImageList().get(e.getProductImageList().size()-1).getPath()}"></td>
+            <td th:text="${e.getDescription()}"></td>
+            <td >
                 <a th:href="@{/admin/products/{id}(id=${e.getProduct_id()})}">View Detail</a>
                 <a th:href="@{/admin/products/update/{id}(id=${e.getProduct_id()})}">Update</a>
                 <a th:href="@{/admin/products/delete/{id}(id=${e.getProduct_id()})}">delete</a>
-            </th>
-
+            </td>
         </tr>
     </tbody>
 </table>

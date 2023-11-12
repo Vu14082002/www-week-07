@@ -30,6 +30,7 @@ public class Product {
     private String manufacturer;
 
     @Column(name = "status")
+//    @Enumerated(EnumType.ORDINAL) --> chi dinh thi converter ko apply dc
     private ProductStatus status;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
