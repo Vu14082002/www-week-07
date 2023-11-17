@@ -36,6 +36,24 @@
     <div>
         <label>Proc DESC</label>
         <textarea rows="4" cols="50" th:field="*{description}"></textarea>
+    </div
+    >
+    <div>
+        <label>Price</label>
+        <input type="text" th:field="*{productPrices[0].price}">
+    </div>
+    <div>
+        <label>Price Note</label>
+        <input type="text" th:field="*{productPrices[0].note}">
+        <input type="hidden" th:field="*{productPrices[0].product}">
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="text" th:field="*{productImageList[0].path}">
+    </div>
+    <div>
+        <label>Image Alter</label>
+        <input type="text" th:field="*{productImageList[0].alternative}">
     </div>
     <input type="submit">
 </form>

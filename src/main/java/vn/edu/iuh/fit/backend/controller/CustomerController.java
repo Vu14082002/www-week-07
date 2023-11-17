@@ -2,7 +2,6 @@ package vn.edu.iuh.fit.backend.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +33,13 @@ public class CustomerController {
     public String create(Model model) {
         model.addAttribute("customer", new Customer());
         return "admin/customer/customer-create-form";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updaet(Model model, @PathVariable("id") long id) {
+        Customer customer = customerRepository.findById(id).get();
+        model.addAttribute("customer", customer);
+        return "admin/customer/customer-update-form";
     }
 
     @PostMapping("save")

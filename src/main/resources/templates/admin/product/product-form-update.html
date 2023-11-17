@@ -33,10 +33,15 @@
                 <input type="text" th:field="*{unit}">
             </div>
 
-            <div>
+            <div>customer
                 <label>Proc DESC</label>
                 <textarea  th:field="*{description}"></textarea>
             </div>
+
+            <select th:field="*{status}" >
+                <option th:each="e : ${productstatus}"
+                        th:value="${e.name}" th:text="${e.name}"></option>
+            </select>
             <input type="hidden" th:field="*{product_id}">
             <input type="submit">
         </form>

@@ -22,7 +22,7 @@ public class Product {
     private String name;
 
     @Lob
-    @Column(name = "description",  columnDefinition = "text", nullable = false)
+    @Column(name = "description", columnDefinition = "text", nullable = false)
     private String description;
     @Column(name = "unit", length = 25, nullable = false)
     private String unit;
@@ -33,12 +33,12 @@ public class Product {
 //    @Enumerated(EnumType.ORDINAL) --> chi dinh thi converter ko apply dc
     private ProductStatus status;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<ProductImage> productImageList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails = new ArrayList<>();
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<ProductPrice> productPrices = new ArrayList<>();
 
     public Product() {
@@ -51,13 +51,20 @@ public class Product {
         this.manufacturer = manufacturer;
         this.status = status;
     }
-    public   void addImage(ProductImage productImage){
+
+    public void addImage(ProductImage productImage) {
         this.productImageList.add(productImage);
         productImage.setProduct(this);
     }
-    public void addPrice(ProductPrice productPrice){
+
+    public void addPrice(ProductPrice productPrice) {
         this.productPrices.add(productPrice);
         productPrice.setProduct(this);
+    }
+
+    public void addProductImage(ProductImage productImage) {
+        this.getProductImageList().add(productImage);
+        productImage.setProduct(this);
     }
 
     public long getProduct_id() {

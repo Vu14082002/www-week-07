@@ -39,6 +39,12 @@ public class ProductPrice {
         this.note = note;
     }
 
+    @PrePersist
+    @PreUpdate
+    private void setLocalDateTime() {
+        price_date_time = LocalDateTime.now();
+    }
+
     @Override
     public String toString() {
         return "ProductPrice{" +

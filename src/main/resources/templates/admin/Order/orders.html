@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+</head>
+<body>
+        <h1 align="center">Order list</h1>
+        <h1><a th:href="@{/admin/orders/new}">Add data</a></h1>
+        <table width="80%" border="1" align="center">
+            <thead>
+            <tr>
+                <th>Order id</th>
+                <th>Employee</th>
+                <th>Customer</th>
+                <th>Order date</th>
+                <th>Action</th>
+            </tr>
+
+            </thead>
+            <tbody>
+                <tr th:each="e: ${orders}">
+                        <td align="center" th:text="${e.getOrder_id()}"></td>
+                        <td th:text="${e.getEmployee().getFullname()}"></td>
+                        <td th:text="${e.getCustomer().getName()}"></td>
+                        <td align="center" th:text="${e.getOrderDate()}"></td>
+                        <td>
+                            <a th:href="@{/admin/orders/{id}(id=${e.getOrder_id()})}">View</a>
+                            <a th:href="@{/admin/orders/update/{id}(id=${e.getOrder_id()})}">Update</a>
+                            <a th:href="@{/admin/orders/delete/{id}(id=${e.getOrder_id()})}">Delete</a>
+                        </td>
+                </tr>
+            </tbody>
+
+        </table>
+</body>
+</html>

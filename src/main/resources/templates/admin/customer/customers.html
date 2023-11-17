@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<h1 align="center">PRODUCTS </h1>
+<h1 align="center">CUSTOMER LIST </h1>
 <div align="center"><a th:href="@{/admin/customers/new}">Create Customer</a></div>
 
 <table width="80%" align="center" border="1">
@@ -33,7 +33,6 @@
         <td th:text="${e.getPhone()}"></td>
         <td th:text="${e.getAddress()}"></td>
         <td >
-            <a th:href="@{/admin/customers/{id}(id=${e.getId()})}">View Detail</a>
             <a th:href="@{/admin/customers/update/{id}(id=${e.getId()})}">Update</a>
             <a th:href="@{/admin/customers/delete/{id}(id=${e.getId()})}">delete</a>
         </td>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Update order</title>
+</head>
+<body>
+        <h1>Update order id:  <th:block th:text="${order.getOrder_id()}"></th:block> </h1>
+        <form   th:action="@{/admin/orders/save}" method="post" th:object="${order}">
+            <div>Customer:
+            <select th:field="*{customer}" >
+               <th:block th:each=" ecustomer : ${customers}">
+                   <option th:text="${ecustomer.name}" th:value="${ecustomer.id}"> </option>
+               </th:block>
+            </select>
+            </div>
+            <div>Employee :
+            <select th:field="*{employee}" >
+                <th:block th:each="e: ${employees} ">
+                    <option th:text="${e.fullname}" th:value="${e.id}"></option>
+                </th:block>
+            </select>
+            </div>
+            <input type="hidden" th:field="*{order_id}">
+            <input type="hidden" th:field="*{orderDate}">
+            <div>
+                <input type="submit" th:value="update">
+            </div>
+        </form>
+
+</body>
+</html>

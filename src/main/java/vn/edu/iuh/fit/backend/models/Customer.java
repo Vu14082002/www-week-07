@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.backend.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,8 +25,8 @@ public class Customer {
     @Column(name = "address", length = 250, nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orderList;
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    private List<Order> orderList = new ArrayList<>();
 
     public Customer() {
     }

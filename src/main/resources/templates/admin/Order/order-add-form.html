@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Order add form</title>
+</head>
+<body>
+      <form th:action="@{/admin/orders/save}" method="post" th:object="${order}">
+          <div>
+              Customer :
+              <select th:field="*{customer}">
+                  <th:block th:each="e : ${customers}">
+                      <option th:value="${e.getId()}" th:text="${e.getName()}"></option>
+                  </th:block>
+              </select>
+          </div>
+          <div>
+              Employee :
+              <select th:field="*{employee}">
+                  <th:block th:each="e : ${employees}">
+                      <option th:value="${e.getId()}" th:text="${e.getFullname()}"></option>
+                  </th:block>
+              </select>
+          </div>
+      </form>
+</body>
+</html>
